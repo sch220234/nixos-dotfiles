@@ -26,10 +26,16 @@
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;
-						users.max.imports = {
-							./home.nix
-							./home
-						}
+						
+						users.max = {
+							{...}:
+							{
+								imports = [
+									./home
+									./home.nix
+								];
+							};	
+						};
 						#users.max = import ./home.nix;
 						backupFileExtension = "backup";
 					};
