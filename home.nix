@@ -1,5 +1,8 @@
 {config, pkgs, ...}:
-
+let
+	dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
+	create_symlink = path: config.lib.file.mkOutOfStoreSymLink path;
+in
 {
 	home.username = "max";
 	home.homeDirectory = "/home/max";

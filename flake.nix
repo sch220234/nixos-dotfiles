@@ -1,14 +1,22 @@
 {
-	description = "NixOs from Scratch";
+	description = "NixOS Flake";
+	
 	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-25.05";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 		home-manager = {
 			url = "github:nix-community/home-manager/release-25.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		systems.url = "github:nix-systems/x86_64-linux";
 	};
 
-	outputs = {self, nixpkgs, home-manager, ...}: {
+	outputs = {
+		self, 
+		nixpkgs,
+	    home-manager, 
+	    ...}:
+	    {
 		nixosConfigurations.nixos-max = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
@@ -18,7 +26,11 @@
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;
-						users.max = import ./home.nix;
+						users.max.imports = {
+							./home.nix
+							./home
+						}
+						#users.max = import ./home.nix;
 						backupFileExtension = "backup";
 					};
 				}
