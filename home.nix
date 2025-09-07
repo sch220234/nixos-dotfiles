@@ -12,7 +12,7 @@ in
 	programs.bash = {
 		enable = true;
 		shellAliases = {
-			btw = "echo I use nixos, btw";
+			btw = "echo Max uses nixos, btw";
 		};
 	};
 }

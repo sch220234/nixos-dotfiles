@@ -27,16 +27,7 @@
 						useGlobalPkgs = true;
 						useUserPackages = true;
 						
-						users.max =
-							{...}:
-							{
-								imports = [
-									./home
-									./home.nix
-								];
-							};	
-						
-						#users.max = import ./home.nix;
+						users.max = import ./home.nix;	
 						backupFileExtension = "backup";
 					};
 				}
