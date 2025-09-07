@@ -6,7 +6,6 @@ in
 {
 	imports = [
 		./modules/git.nix
-		./modules/packettracer.nix
 	];
 
 	home.username = "max";

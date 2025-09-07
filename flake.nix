@@ -21,6 +21,7 @@
 			system = "x86_64-linux";
 			modules = [
 				./configuration.nix
+				./modules/packettracer.nix
 				home-manager.nixosModules.home-manager
 				{
 					home-manager = {
