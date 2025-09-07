@@ -1,20 +1,10 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
 
-  #home.enableNixpkgsReleaseCheck = true;
- # home-manager.useUserPackages = true;
-  #home-manager.useGlobalPkgs = true;
-  #home-manager.backupFileExtension = "backup";
-  #home-manager.users.max = import ./home.nix
-  
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.command-not-found.enable = true;
 
@@ -23,7 +13,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos-max"; # Define your hostname.
+  networking.hostName = "nixos-max";
 
   networking.networkmanager.enable = true;
   networking.wireless.enable = false;
@@ -46,9 +36,6 @@
 
   virtualisation.docker.enable = true;
   
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
   services.xserver = {
   	enable = true;
   	autoRepeatDelay = 200;
@@ -57,14 +44,11 @@
   	xkb.variant = "";
   };
 
-  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -85,13 +69,18 @@
     
   };
 
-  # Java
   programs.java = {
   	enable = true;
   	package = pkgs.jdk24;
   };
 
-  # Allow unfree packages
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; 
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   nixpkgs.config.allowUnfree = true;
 
 
@@ -217,11 +206,8 @@
 	
   programs.fish.enable = true;
 
-  #Fonts
   fonts.fontDir.enable = true;
   
-
-  #Hyprland
   programs.hyprland = {
 	enable = true;
 	xwayland.enable = true;
@@ -239,8 +225,6 @@
   };
   services.xserver.videoDrivers = ["nvidia"];
   
-
-  #XDG
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 	  

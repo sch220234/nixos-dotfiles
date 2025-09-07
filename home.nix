@@ -6,7 +6,6 @@ in
 {
 	imports = [
 		./modules/git.nix
-		./modules/steam.nix
 	];
 
 	home.username = "max";
