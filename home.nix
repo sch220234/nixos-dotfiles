@@ -1,9 +1,13 @@
-{config, pkgs, ...}:
+{config, pkgs, lib, ...}:
 let
 	dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
 	create_symlink = path: config.lib.file.mkOutOfStoreSymLink path;
 in
 {
+	imports = [
+		./modules/git.nix
+	];
+
 	home.username = "max";
 	home.homeDirectory = "/home/max";
 	programs.git.enable = true;
