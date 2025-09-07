@@ -91,16 +91,6 @@
   	package = pkgs.jdk24;
   };
 
-  
-
-  # Install firefox.
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Optional: for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Optional: for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Optional: for local network game transfers
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

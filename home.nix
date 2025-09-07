@@ -6,16 +6,12 @@ in
 {
 	imports = [
 		./modules/git.nix
+		./modules/steam.nix
 	];
 
 	home.username = "max";
 	home.homeDirectory = "/home/max";
 	home.stateVersion = "25.05";
-
-	programs.git = {
-		enable = true;
-		userEmail = "test@email.com";
-	}
 
 	programs.bash = {
 		enable = true;
