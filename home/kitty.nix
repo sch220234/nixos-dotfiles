@@ -1,0 +1,32 @@
+{ config, ... }:
+{
+  home.file.".config/kitty/kitty.conf".text = ''
+    	    font_family MesloLGS NF
+          bold_font        auto
+          italic_font      auto
+          bold_italic_font auto
+          
+          #Custom
+          background_opacity 0.5
+          
+          window_padding_width 8
+          cursor_shape beam
+          tab_bar_align center
+          confirm_os_window_close 0
+          detect_urls yes
+          strip_trailing_spaces smart
+          
+          # Better resize controls
+          map ctrl+left resize_window narrower
+          map ctrl+right resize_window wider
+          map ctrl+up resize_window taller
+          map ctrl+down resize_window shorter
+          map ctrl+home resize_window reset
+          
+          # Pywal
+          include ~/.cache/wal/colors-kitty.conf
+          
+          shell fish
+
+    	  '';
+}

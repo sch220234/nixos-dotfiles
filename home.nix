@@ -5,7 +5,6 @@ let
 in
 {
 	imports = [
-		./modules/git.nix
 	];
 
 	home.username = "max";

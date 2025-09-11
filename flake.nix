@@ -7,11 +7,12 @@
 			url = "github:nix-community/home-manager/release-25.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-
+		helix.url = "github:helix-editor/helix/master";
+		
 		systems.url = "github:nix-systems/x86_64-linux";
 	};
 
-	outputs = {
+	outputs = inputs@{
 		self, 
 		nixpkgs,
 	    home-manager, 
@@ -19,6 +20,8 @@
 	    {
 		nixosConfigurations.nixos-max = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
+
+			specialArgs = { inherit inputs; };
 			
 			modules = [
 				./configuration.nix
@@ -28,9 +31,14 @@
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;
-						
-						users.max = import ./home.nix;	
+							
 						backupFileExtension = "backup";
+
+						users.max = {...}:{
+							imports = [
+								./home/default.nix	
+							];	
+						};
 					};
 				}
 			];

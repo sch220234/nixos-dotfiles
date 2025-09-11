@@ -1,15 +1,22 @@
-{ config, pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ./modules/packettracer.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   programs.command-not-found.enable = true;
 
-    
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -35,13 +42,13 @@
   };
 
   virtualisation.docker.enable = true;
-  
+
   services.xserver = {
-  	enable = true;
-  	autoRepeatDelay = 200;
-  	autoRepeatInterval = 35;
-  	xkb.layout = "us";
-  	xkb.variant = "";
+    enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35;
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   services.displayManager.sddm.enable = true;
@@ -58,102 +65,104 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  
+
   users.users.max = {
     isNormalUser = true;
     description = "max";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     packages = with pkgs; [
-      kdePackages.kate   
-     ];
-    
+      kdePackages.kate
+    ];
+
   };
 
   programs.java = {
-  	enable = true;
-  	package = pkgs.jdk24;
+    enable = true;
+    package = pkgs.jdk24;
   };
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; 
+    remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
 
   nixpkgs.config.allowUnfree = true;
 
-
   environment.systemPackages = with pkgs; [
     vim
     wget
     home-manager
-	git
-	openjdk21
-	pavucontrol
-	firefox
-	fish
-	jre21_minimal
-	jre_minimal
-	jdk
-	jdk24
-	vscode
-	neovim
-	gedit
-	xdg-utils
-	waypaper
-	vim
-	micro
-	hyprland
-	libreoffice-qt6
-	jetbrains-toolbox
-	jetbrains.idea-ultimate
-	kitty
-	waybar
-	(waybar.overrideAttrs (oldAttrs: {
-		mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-		})
-	)
-	eww
-	swww
-	mako
-	dunst
-	libnotify
-	hyprpaper
-	swaybg
-	wpaperd
-	mpvpaper
-	rofi-wayland
-	wofi
-	fuzzel
-	tofi
-	bibata-cursors
-	nerdfetch
-	prismlauncher
-	(prismlauncher.override {
-		additionalPrograms = [ffmpeg];
+    git
+    openjdk21
+    pavucontrol
+    firefox
+    fish
+    jre21_minimal
+    jre_minimal
+    jdk
+    jdk24
+    vscode
+    neovim
+    gedit
+    xdg-utils
+    waypaper
+    vim
+    micro
+    hyprland
+    libreoffice-qt6
+    jetbrains-toolbox
+    jetbrains.idea-ultimate
+    kitty
+    waybar
+    (waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    }))
+    eww
+    swww
+    mako
+    dunst
+    libnotify
+    hyprpaper
+    swaybg
+    wpaperd
+    mpvpaper
+    rofi-wayland
+    wofi
+    fuzzel
+    tofi
+    bibata-cursors
+    nerdfetch
+    prismlauncher
+    (prismlauncher.override {
+      additionalPrograms = [ ffmpeg ];
 
-		jdks = [
-			graalvm-ce
-			zulu8
-			zulu17
-			zulu
-		];
-	})
-	nerd-fonts.jetbrains-mono
-	nerd-fonts.fira-code
-	steam
-	steam-run
-	alsa-utils
-	alacritty
-	alacritty-theme
-	zed
-	vscodium
-	vscode
-	kdePackages.kate
-	grim
-	grimblast
-	wl-clipboard
+      jdks = [
+        graalvm-ce
+        zulu8
+        zulu17
+        zulu
+      ];
+    })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    steam
+    steam-run
+    alsa-utils
+    alacritty
+    alacritty-theme
+    zed
+    vscodium
+    vscode
+    kdePackages.kate
+    grim
+    grimblast
+    wl-clipboard
     slurp
     swappy
     hyprshot
@@ -195,39 +204,90 @@
     fishPlugins.foreign-env
     jetbrains.datagrip
     jetbrains.pycharm-professional
+    xfce.thunar
+    libsForQt5.kget
+    tree
+    traceroute
+    wireshark
+    screen
+    usbutils
+    inputs.helix.packages."${pkgs.system}".helix
+    whois
+    dig
+    dmenu
+    swaynotificationcenter
+    sddm-astronaut
+    nwg-look
+    bluez
+    bluez-tools
+    blueman
+    timeshift
+    bleachbit
+    gnome-disk-utility
+    neohtop
+    dysk
+    brightnessctl
+    tlp
+    ranger
+    tree
+    ueberzug
+    rofi-calc
+    rofi-emoji
+    redshift
+    gpick
+    gnome-calendar
+    gnome-clocks
+    android-studio
+    github-cli
+    docker-compose
+    lazydocker
     postman
+    shellcheck
+    cloc
+    fakeroot
+    filezilla
+    jq
+    dbeaver-bin
+    anydesk
+    vlc
+    mpd
+    zip
+    unzip
+    gzip
+    tmux
+    tmuxPlugins.fingers
   ];
 
   fonts.packages = with pkgs; [
-  	nerd-fonts.jetbrains-mono
+    nerd-fonts.jetbrains-mono
   ];
-  
+
   programs.firefox.enable = true;
-	
+
   programs.fish.enable = true;
 
   fonts.fontDir.enable = true;
-  
+
   programs.hyprland = {
-	enable = true;
-	xwayland.enable = true;
+    enable = true;
+    xwayland.enable = true;
   };
 
   environment.sessionVariables = {
-	WLR_NO_HARDWARE_CURSORS = "1";
-	NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   hardware = {
-	graphics.enable = true;
-	nvidia.modesetting.enable = true;
-	nvidia.open = false;
+    graphics.enable = true;
+    nvidia.modesetting.enable = true;
+    nvidia.open = false;
   };
-  services.xserver.videoDrivers = ["nvidia"];
-  
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-	  
+
   system.stateVersion = "25.05";
 
 }
