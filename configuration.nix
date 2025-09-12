@@ -256,6 +256,7 @@
     gzip
     tmux
     tmuxPlugins.fingers
+    graphviz
   ];
 
   fonts.packages = with pkgs; [
