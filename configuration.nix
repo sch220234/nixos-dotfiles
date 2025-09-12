@@ -257,6 +257,8 @@
     tmux
     tmuxPlugins.fingers
     graphviz
+    google-java-format
+    rstudio
   ];
 
   fonts.packages = with pkgs; [

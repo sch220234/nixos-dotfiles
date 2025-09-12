@@ -4,10 +4,19 @@
     enable = true;
     defaultEditor = true;
 
-    extraPackages = [
-      pkgs.nil
-      pkgs.nixd
-      pkgs.nixfmt-rfc-style
+    extraPackages = with pkgs; [
+      nil
+      nixd
+      nixfmt-rfc-style
+      jdt-language-server
+      ty
+      bash-language-server
+      fish-lsp
+      vscode-extensions.ecmel.vscode-html-css
+      nodePackages.vscode-json-languageserver
+      kotlin-language-server
+      typescript-language-server
+      yaml-yaml-language-server
     ];
 
     settings = {
