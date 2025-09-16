@@ -19,6 +19,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 
   networking.hostName = "nixos-max";
 
@@ -41,15 +42,26 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    libvirtd.enable = true;
+  };
+
+  programs.dconf.enable = true;
 
   services.xserver = {
     enable = true;
     autoRepeatDelay = 200;
     autoRepeatInterval = 35;
-    xkb.layout = "us";
+    xkb.layout = "us,de";
     xkb.variant = "";
+    videoDrivers = [
+      "vmware"
+      "nvidia"
+    ];
   };
+
+  services.qemuGuest.enable = true;
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -73,6 +85,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "libvirtd"
     ];
     packages = with pkgs; [
       kdePackages.kate
@@ -199,7 +212,7 @@
     jetbrains.webstorm
     nodejs_24
     mysql84
-    chromium
+    ungoogled-chromium
     docker
     fishPlugins.foreign-env
     jetbrains.datagrip
@@ -259,6 +272,12 @@
     graphviz
     google-java-format
     rstudio
+    openvpn3
+    virt-manager
+    qemu
+    libvirt
+    virt-viewer
+    bridge-utils
   ];
 
   fonts.packages = with pkgs; [
@@ -286,7 +305,6 @@
     nvidia.modesetting.enable = true;
     nvidia.open = false;
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];

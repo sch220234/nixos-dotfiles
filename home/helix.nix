@@ -16,7 +16,7 @@
       nodePackages.vscode-json-languageserver
       kotlin-language-server
       typescript-language-server
-      yaml-yaml-language-server
+      yaml-language-server
     ];
 
     settings = {
