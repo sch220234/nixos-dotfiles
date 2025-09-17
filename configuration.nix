@@ -278,6 +278,8 @@
     libvirt
     virt-viewer
     bridge-utils
+    galculator
+    smile
   ];
 
   fonts.packages = with pkgs; [

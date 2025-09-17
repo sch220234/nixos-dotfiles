@@ -4,7 +4,7 @@
     enable = true;
 
     shellInit = ''
-      			set -g fish_greeting "Neel: Zzzzzzzzzz"
+      			set -g fish_greeting (date) "snrs"
       			starship init fish | source
       		'';
     shellAliases = {
