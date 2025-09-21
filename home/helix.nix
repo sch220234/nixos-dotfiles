@@ -9,7 +9,9 @@
       nixd
       nixfmt-rfc-style
       jdt-language-server
+      rocmPackages.llvm.clang-tools
       ty
+      python313Packages.python-lsp-server
       bash-language-server
       fish-lsp
       vscode-extensions.ecmel.vscode-html-css

@@ -24,6 +24,8 @@ in
       }
       tmuxPlugins.better-mouse-mode
     ];
-    extraConfig = '''';
+    extraConfig = ''
+      bind-key -n C-S-t new-window
+    '';
   };
 }

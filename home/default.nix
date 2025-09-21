@@ -21,6 +21,7 @@ in
     ./helix.nix
     ./kitty.nix
     ./tmux.nix
+    ./binja.nix
   ];
 
   home.stateVersion = "25.05";

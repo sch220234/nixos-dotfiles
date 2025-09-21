@@ -107,6 +107,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-sdk-6.0.428"
+    "dotnet-runtime-6.0.36"
+  ];
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -280,6 +284,16 @@
     bridge-utils
     galculator
     smile
+    p7zip
+    netcat
+    snicat
+    wireguard-tools
+    unp
+    gdb
+    networkminer
+    clang
+    gcc
+    gnumake
   ];
 
   fonts.packages = with pkgs; [

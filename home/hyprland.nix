@@ -40,7 +40,7 @@
       		 bind = $mainMod, D, fullscreen, 1
       		 bind = $mainMod, F, fullscreen, 0
       		 # EMOJI
-      		 bind = $mainMod, period, exec, emote
+      		 bind = $mainMod, period, exec, smile
       		 # Hyprlock
       		 bind = $mainMod, L, exec, hyprlock
       		 #Screenshot grimblast
