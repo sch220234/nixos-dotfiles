@@ -294,6 +294,10 @@
     clang
     gcc
     gnumake
+    android-tools
+    android-backup-extractor
+    zellij
+    snicat
   ];
 
   fonts.packages = with pkgs; [
