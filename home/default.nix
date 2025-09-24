@@ -17,6 +17,8 @@ in
     ./wine.nix
     ./git.nix
     ./r.nix
+    ./uv.nix
+    ./js.nix
     ./fish.nix
     ./helix.nix
     ./kitty.nix

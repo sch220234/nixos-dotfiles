@@ -107,6 +107,12 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
+
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-sdk-6.0.428"
     "dotnet-runtime-6.0.36"
@@ -298,7 +304,15 @@
     android-backup-extractor
     zellij
     snicat
+    hashcat
+    ocl-icd
+    opencl-clhpp
+    clinfo
   ];
+  hardware.graphics = {
+    enable = true;
+  };
+  hardware.nvidia.open = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -318,12 +332,6 @@
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
-  };
-
-  hardware = {
-    graphics.enable = true;
-    nvidia.modesetting.enable = true;
-    nvidia.open = false;
   };
 
   xdg.portal.enable = true;
