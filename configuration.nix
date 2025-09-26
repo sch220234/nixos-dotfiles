@@ -45,6 +45,11 @@
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;
+
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
 
   programs.dconf.enable = true;
@@ -124,8 +129,6 @@
     git
     openjdk21
     pavucontrol
-    firefox
-    fish
     jre21_minimal
     jre_minimal
     jdk
@@ -234,8 +237,8 @@
     wireshark
     screen
     usbutils
-    inputs.helix.packages."${pkgs.system}".helix
     whois
+    helix
     dig
     dmenu
     swaynotificationcenter
@@ -308,6 +311,11 @@
     ocl-icd
     opencl-clhpp
     clinfo
+    php
+    freerdp3
+    dialog
+    iproute2
+    mysql-workbench
   ];
   hardware.graphics = {
     enable = true;
@@ -317,8 +325,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-
-  programs.firefox.enable = true;
 
   programs.fish.enable = true;
 

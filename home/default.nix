@@ -2,6 +2,7 @@
   config,
   pkgs,
   libs,
+  winapps,
   ...
 }:
 let
@@ -15,6 +16,7 @@ in
   imports = [
     ./hyprland.nix
     ./wine.nix
+    ./firefox.nix
     ./git.nix
     ./r.nix
     ./uv.nix
@@ -24,6 +26,11 @@ in
     ./kitty.nix
     ./tmux.nix
     ./binja.nix
+  ];
+
+  home.packages = [
+    winapps.packages.${pkgs.system}.winapps
+    winapps.packages.${pkgs.system}.winapps-launcher
   ];
 
   home.stateVersion = "25.05";
