@@ -14,7 +14,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    winapps.url = "github:winapps-org/winapps";
   };
 
   outputs =
@@ -44,7 +43,6 @@
 
               extraSpecialArgs = {
                 extensions = firefox-extensions.packages.x86_64-linux;
-                winapps = inputs.winapps;
               };
 
               users.max =

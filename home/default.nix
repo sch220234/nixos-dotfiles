@@ -2,7 +2,6 @@
   config,
   pkgs,
   libs,
-  winapps,
   ...
 }:
 let
@@ -26,11 +25,6 @@ in
     ./kitty.nix
     ./tmux.nix
     ./binja.nix
-  ];
-
-  home.packages = [
-    winapps.packages.${pkgs.system}.winapps
-    winapps.packages.${pkgs.system}.winapps-launcher
   ];
 
   home.stateVersion = "25.05";
