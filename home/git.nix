@@ -1,18 +1,18 @@
-{config, ...}:
+{ config, ... }:
 {
-	programs.git = {
-		enable = true;
+  programs.git = {
+    enable = true;
 
-		userName = "patsch";
-		userEmail = "sch220234@spengergasse.at";
+    userName = "Patrick Schmid";
+    userEmail = "sch220234@spengergasse.at";
 
-		extraConfig.init.defaultBranch = "main";
-	};
-	home.file.".gitconfig".text = ''
-	    [user]
-	        name = patsch
-	        email = scch220234@spengergasse.at
-	    [init]
-	        defaultBranch = main
-	  '';
+    extraConfig.init.defaultBranch = "main";
+
+    signing = {
+      signByDefault = true;
+      key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+      format = "ssh";
+    };
+  };
+
 }

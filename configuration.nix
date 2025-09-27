@@ -316,6 +316,15 @@
     dialog
     iproute2
     mysql-workbench
+    gnupg
+    pinentry
+    pkg-config
+    libxml2.dev
+    openssl.dev
+    curl.dev
+    freetype.dev
+    fontconfig.dev
+    R
   ];
   hardware.graphics = {
     enable = true;

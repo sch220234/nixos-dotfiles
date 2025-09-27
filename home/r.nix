@@ -1,10 +1,21 @@
 { pkgs, ... }:
 let
+  packages = with pkgs.rPackages; [
+    languageserver
+    tidyverse
+  ];
   wrapper = pkgs.rWrapper.override {
-    packages = with pkgs.rPackages; [ languageserver ];
+    inherit packages;
+  };
+  rstudio = pkgs.rstudioWrapper.override {
+    inherit packages;
   };
 in
 {
   programs.helix.extraPackages = [ wrapper ];
-  home.packages = [ wrapper ];
+  home.packages = [
+    wrapper
+    rstudio
+  ];
+
 }
