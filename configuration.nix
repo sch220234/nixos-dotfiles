@@ -54,6 +54,8 @@
 
   programs.dconf.enable = true;
 
+  services.blueman.enable = true;
+
   services.xserver = {
     enable = true;
     autoRepeatDelay = 200;
@@ -246,7 +248,6 @@
     nwg-look
     bluez
     bluez-tools
-    blueman
     timeshift
     bleachbit
     gnome-disk-utility
@@ -325,11 +326,17 @@
     freetype.dev
     fontconfig.dev
     R
+    john
   ];
   hardware.graphics = {
     enable = true;
   };
   hardware.nvidia.open = true;
+
+  hardware.bluetooth = {
+    enable = true;
+
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
