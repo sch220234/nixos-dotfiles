@@ -327,6 +327,9 @@
     fontconfig.dev
     R
     john
+    cheese
+    gitkraken
+    geogebra6
   ];
   hardware.graphics = {
     enable = true;
@@ -335,7 +338,7 @@
 
   hardware.bluetooth = {
     enable = true;
-
+    powerOnBoot = false;
   };
 
   fonts.packages = with pkgs; [
