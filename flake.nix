@@ -9,11 +9,17 @@
     };
 
     systems.url = "github:nix-systems/x86_64-linux";
+    copai = {
+      url = "github:inet4/copai";
+      inputs.nixpkgs.follows = "nixpkgs"; # optional to prevent duplicates
+      inputs.firefox-extensions.follows = "firefox-extensions"; # optional to prevent duplicates
+    };
 
     firefox-extensions = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =
@@ -22,6 +28,7 @@
       nixpkgs,
       home-manager,
       firefox-extensions,
+      copai,
       ...
     }:
     {

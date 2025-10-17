@@ -148,9 +148,6 @@
     jetbrains.idea-ultimate
     kitty
     waybar
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    }))
     eww
     swww
     mako
@@ -330,6 +327,8 @@
     cheese
     gitkraken
     geogebra6
+    warp
+    slack
   ];
   hardware.graphics = {
     enable = true;

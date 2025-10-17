@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "copai": {
+      "inputs": {
+        "firefox-extensions": [
+          "firefox-extensions"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760513684,
+        "narHash": "sha256-5kkhUfhBMtHR26FIA5WiPubfcl9Lf9Dvzj50FQ85kO4=",
+        "owner": "inet4",
+        "repo": "copai",
+        "rev": "9ced26c6c23dbfc55cd48e92d253223f83a8e6c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "inet4",
+        "repo": "copai",
+        "type": "github"
+      }
+    },
     "firefox-extensions": {
       "inputs": {
         "nixpkgs": [
@@ -61,6 +84,7 @@
     },
     "root": {
       "inputs": {
+        "copai": "copai",
         "firefox-extensions": "firefox-extensions",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",

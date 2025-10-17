@@ -58,7 +58,7 @@
       		 bind = $mainMod, Q, killactive,
       		 bind = $mainMod, B, exec, librewolf -P school
       		 bind = $mainMod, K, exec, librewolf -P personal
-      		 bind = $mainMod, M, exit,
+      		 # bind = $mainMod, M, exit,
       		 bind = $mainMod, E, exec, thunar
       		 bind = $mainMod, V, togglefloating,
       		 bind = $mainMod, R, exec, $menu
