@@ -23,7 +23,7 @@
       settings = {
         "sidebar.verticalTabs" = true;
         "browser.startup.page" = 3;
-        "ui.highlight" = "white";
+        "ui.highlight" = "blue";
         "ui.highlighttext" = "#002d75";
       };
       bookmarks = {

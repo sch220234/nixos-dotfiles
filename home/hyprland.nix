@@ -45,7 +45,8 @@
       		 bind = $mainMod, L, exec, hyprlock
       		 #Screenshot grimblast
       		 bind = $mainMod, G, exec, hyprshot -m region --clipboard-only
-      		 
+      		 bind = $mainMod, H, exec, hyprshot -m region      		 
+
       		 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       		 #bind = Super,Super_L, exec, /home/max/bin/toggle_wofi.sh
       		 #bind = Super, Super_L, exec, ulauncher-toggle
@@ -112,8 +113,8 @@
       		 bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
       		 bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       		 bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-      		 bindel = ,XF86MonBrightnessUp, exec, brightnessctl 5%+
-      		 bindel = ,XF86MonBrightnessDown, exec, brightnessctl 5%-
+      		 bindel = ,XF86MonBrightnessUp, exec, brightnessctl set 5%+
+      		 bindel = ,XF86MonBrightnessDown, exec, brightnessctl set 5%-
       		 
       		 # Requires playerctl
       		 bindl = , XF86AudioNext, exec, playerctl next
@@ -172,12 +173,10 @@
       		############################
 
       		 exec-once = [workspace 1 silent] kitty
-      		 exec-once = [workspace 2 silent] librewolf -P school
+      		 # exec-once = [workspace 2 silent] librewolf -P school
+      		 exec-once = [workspace 2 silent] firefox
       		 exec-once = [workspace 9 silent] librewolf -P personal
       		 exec-once = [workspace 10 silent] vesktop
-      		 
-      		 #random wallpaper
-      		 #exec-once = ~/.config/hypr/randomWallpaper.sh
       		 
       		 exec-once = ~/.config/hypr/scripts/desktop-portal.sh
       		 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

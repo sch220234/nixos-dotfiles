@@ -25,6 +25,8 @@
 
   networking.networkmanager.enable = true;
   networking.wireless.enable = false;
+  ###TEMP
+  # networking.firewall.enable = false;
 
   time.timeZone = "Europe/Vienna";
 
@@ -84,6 +86,13 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  programs.wireshark.enable = true;
+
+  # allow users in group "wireshark" to capture (dumpcap)
+  programs.wireshark.dumpcap.enable = true;
+
+  # optional: allow usbmon for USB capture
+  # programs.wireshark.usbmon.enable = true;
 
   users.users.max = {
     isNormalUser = true;
@@ -93,16 +102,12 @@
       "wheel"
       "docker"
       "libvirtd"
+      "wireshark"
     ];
     packages = with pkgs; [
       kdePackages.kate
     ];
 
-  };
-
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk24;
   };
 
   programs.steam = {
@@ -179,8 +184,6 @@
     steam
     steam-run
     alsa-utils
-    alacritty
-    alacritty-theme
     zed
     vscodium
     vscode
@@ -279,7 +282,6 @@
     unzip
     gzip
     tmux
-    tmuxPlugins.fingers
     graphviz
     google-java-format
     rstudio
@@ -301,11 +303,7 @@
     clang
     gcc
     gnumake
-    android-tools
-    android-backup-extractor
     zellij
-    snicat
-    hashcat
     ocl-icd
     opencl-clhpp
     clinfo
@@ -325,10 +323,10 @@
     R
     john
     cheese
-    gitkraken
     geogebra6
     warp
-    slack
+    dsniff
+    nmap
   ];
   hardware.graphics = {
     enable = true;
@@ -363,4 +361,5 @@
 
   system.stateVersion = "25.05";
 
+  # services.openssh.enable = true;
 }
