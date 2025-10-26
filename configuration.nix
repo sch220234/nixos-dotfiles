@@ -117,18 +117,12 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "dotnet-sdk-6.0.428"
-    "dotnet-runtime-6.0.36"
-  ];
   environment.systemPackages = with pkgs; [
     vim
     wget

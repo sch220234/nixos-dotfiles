@@ -3,16 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    systems.url = "github:nix-systems/x86_64-linux";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    systems.url = "github:nix-systems/x86_64-linux";
-    copai = {
-      url = "github:inet4/copai";
-      inputs.nixpkgs.follows = "nixpkgs"; # optional to prevent duplicates
-      inputs.firefox-extensions.follows = "firefox-extensions"; # optional to prevent duplicates
     };
 
     firefox-extensions = {
@@ -28,12 +23,39 @@
       nixpkgs,
       home-manager,
       firefox-extensions,
-      copai,
       ...
     }:
+    let
+      system = "x86_64-linux";
+      pkgs = pkgsExternal; # Just use pkgsExternal directly—no overlay needed
+
+      pkgsExternal = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [
+            "dotnet-sdk-6.0.428"
+            "dotnet-runtime-6.0.36"
+          ];
+        };
+      };
+
+      unstablePkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        config.permittedInsecurePackages = [
+          "dotnet-sdk-6.0.428"
+          "dotnet-runtime-6.0.36"
+        ];
+      };
+
+      extra = {
+        extensions = firefox-extensions.packages.${system};
+      };
+    in
     {
       nixosConfigurations.nixos-max = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system pkgs;
 
         specialArgs = { inherit inputs; };
 
@@ -49,7 +71,8 @@
               backupFileExtension = "backup";
 
               extraSpecialArgs = {
-                extensions = firefox-extensions.packages.x86_64-linux;
+                inherit unstablePkgs;
+                extensions = extra.extensions;
               };
 
               users.max =
