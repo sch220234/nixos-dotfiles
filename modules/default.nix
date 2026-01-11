@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   libs,
   ...
 }:
@@ -14,18 +13,7 @@ in
   home.homeDirectory = "/home/max";
 
   imports = [
-    ./hyprland.nix
-    ./wine.nix
-    ./firefox.nix
-    ./git.nix
-    ./r.nix
-    ./uv.nix
-    ./js.nix
-    ./fish.nix
-    ./helix.nix
-    ./kitty.nix
-    ./tmux.nix
-    ./java.nix
+    ./packettracer.nix
   ];
 
   home.stateVersion = "25.05";

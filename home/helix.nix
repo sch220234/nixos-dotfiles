@@ -9,7 +9,7 @@
       nixd
       nixfmt-rfc-style
       jdt-language-server
-      rocmPackages.llvm.clang-tools
+      clang-tools
       ty
       python313Packages.python-lsp-server
       bash-language-server

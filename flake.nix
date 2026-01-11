@@ -2,11 +2,11 @@
   description = "NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     systems.url = "github:nix-systems/x86_64-linux";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -15,6 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    claude-desktop = {
+      url = "github:k3d3/claude-desktop-linux-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -23,6 +27,7 @@
       nixpkgs,
       home-manager,
       firefox-extensions,
+      claude-desktop,
       ...
     }:
     let
@@ -36,6 +41,7 @@
           permittedInsecurePackages = [
             "dotnet-sdk-6.0.428"
             "dotnet-runtime-6.0.36"
+            "ciscoPacketTracer8-8.2.2"
           ];
         };
       };

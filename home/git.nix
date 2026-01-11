@@ -3,8 +3,10 @@
   programs.git = {
     enable = true;
 
-    userName = "Patrick Schmid";
-    userEmail = "sch220234@spengergasse.at";
+    settings.user = {
+      name = "Patrick Schmid";
+      email = "sch220234@spengergasse.at";
+    };
 
     extraConfig.init.defaultBranch = "main";
 

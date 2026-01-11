@@ -25,8 +25,15 @@
 
   networking.networkmanager.enable = true;
   networking.wireless.enable = false;
+  networking.networkmanager = {
+    settings = {
+      connectivity = {
+        uri = "http://connectivitycheck.gstatic.com/generate_204";
+      };
+    };
+  };
   ###TEMP
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   time.timeZone = "Europe/Vienna";
 
@@ -57,6 +64,8 @@
   programs.dconf.enable = true;
 
   services.blueman.enable = true;
+
+  services.flatpak.enable = true;
 
   services.xserver = {
     enable = true;
@@ -128,25 +137,18 @@
     wget
     home-manager
     git
-    openjdk21
     pavucontrol
-    jre21_minimal
-    jre_minimal
-    jdk
-    jdk24
     vscode
     neovim
     gedit
     xdg-utils
     waypaper
-    vim
     micro
     hyprland
     libreoffice-qt6
     jetbrains-toolbox
-    jetbrains.idea-ultimate
+    jetbrains.idea
     kitty
-    waybar
     eww
     swww
     mako
@@ -156,18 +158,15 @@
     swaybg
     wpaperd
     mpvpaper
-    rofi-wayland
     wofi
     fuzzel
     tofi
     bibata-cursors
     nerdfetch
-    prismlauncher
     (prismlauncher.override {
       additionalPrograms = [ ffmpeg ];
 
       jdks = [
-        graalvm-ce
         zulu8
         zulu17
         zulu
@@ -188,7 +187,6 @@
     slurp
     swappy
     hyprshot
-    hyprlock
     hypridle
     xwayland
     nixd
@@ -203,12 +201,11 @@
     font-manager
     lxappearance
     gamescope
-    protonup
+    protonup-ng
     starship
     btop
     brave
     librewolf
-    vesktop
     minecraftia
     atlauncher
     python314
@@ -225,9 +222,8 @@
     docker
     fishPlugins.foreign-env
     jetbrains.datagrip
-    jetbrains.pycharm-professional
+    jetbrains.pycharm
     xfce.thunar
-    libsForQt5.kget
     tree
     traceroute
     wireshark
@@ -302,12 +298,12 @@
     opencl-clhpp
     clinfo
     php
-    freerdp3
+    freerdp
     dialog
     iproute2
     mysql-workbench
     gnupg
-    pinentry
+    pinentry-gnome3
     pkg-config
     libxml2.dev
     openssl.dev
@@ -321,6 +317,23 @@
     warp
     dsniff
     nmap
+    kotlin
+    spotify
+    gimp3
+    gitkraken
+    socat
+    bun
+    waybar
+    swaylock
+    hyprlock
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
+    wireplumber
+    mongodb-compass
+    imagemagick
+    hollywood
+    inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
+    discord
   ];
   hardware.graphics = {
     enable = true;
@@ -344,6 +357,8 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  programs.hyprlock.enable = true;
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
