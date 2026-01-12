@@ -3,12 +3,13 @@
   programs.git = {
     enable = true;
 
-    settings.user = {
-      name = "Patrick Schmid";
-      email = "sch220234@spengergasse.at";
+    settings = {
+      user = {
+        name = "Patrick Schmid";
+        email = "sch220234@spengergasse.at";
+      };
+      init.defaultBranch = "main";
     };
-
-    extraConfig.init.defaultBranch = "main";
 
     signing = {
       signByDefault = true;

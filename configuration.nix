@@ -14,6 +14,7 @@
     "nix-command"
     "flakes"
   ];
+  system.stateVersion = "25.11";
 
   programs.command-not-found.enable = true;
 
@@ -332,7 +333,7 @@
     mongodb-compass
     imagemagick
     hollywood
-    inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
+    inputs.claude-desktop.packages.${stdenv.hostPlatform.system}.claude-desktop-with-fhs
     discord
   ];
   hardware.graphics = {
@@ -367,8 +368,6 @@
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  system.stateVersion = "25.05";
 
   # services.openssh.enable = true;
 }
