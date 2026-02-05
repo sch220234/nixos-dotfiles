@@ -2,9 +2,8 @@
 {
   programs.java = {
     enable = true;
-    package = pkgs.jdk25;
+    package = pkgs.jdk21;
   };
-
   home.packages = with pkgs; [
     maven
     gradle

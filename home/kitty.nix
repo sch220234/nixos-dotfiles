@@ -7,7 +7,7 @@
           bold_italic_font auto
           
           #Custom
-          background_opacity 0.5
+          background_opacity 1
           
           window_padding_width 8
           cursor_shape beam

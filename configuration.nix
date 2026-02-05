@@ -335,6 +335,9 @@
     hollywood
     inputs.claude-desktop.packages.${stdenv.hostPlatform.system}.claude-desktop-with-fhs
     discord
+    neofetch
+    mapscii
+    vagrant
   ];
   hardware.graphics = {
     enable = true;

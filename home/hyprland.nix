@@ -119,7 +119,7 @@
       ];
       monitor = [
         ",highres, 0x0,1,mirror, eDP-1 "
-        "eDP-1,1920x1080@60, 0x0, 1"
+        "eDP-1,highres, 0x0, 1"
       ];
       #Environment Variables
       env = [

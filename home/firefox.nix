@@ -42,7 +42,7 @@
               "package"
             ];
             keyword = "+np";
-            url = "https://search.nixos.org/packages?channel=25.05&query=%s";
+            url = "https://search.nixos.org/packages?channel=25.11&query=%s";
           }
           {
             name = "nixos options";
@@ -51,7 +51,7 @@
               "options"
             ];
             keyword = "+no";
-            url = "https://search.nixos.org/options?channel=25.05&query=%s";
+            url = "https://search.nixos.org/options?channel=25.11&query=%s";
           }
           {
             name = "outlook";
@@ -71,7 +71,7 @@
           }
           {
             name = "hm options";
-            url = "https://home-manager-options.extranix.com/?channel=25.05&query=";
+            url = "https://home-manager-options.extranix.com/?channel=25.11&query=";
           }
         ];
       };
