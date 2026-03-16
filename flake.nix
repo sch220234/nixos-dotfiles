@@ -86,6 +86,7 @@
                 {
                   imports = [
                     ./home/default.nix
+                    ./home.nix
                   ];
                 };
             };

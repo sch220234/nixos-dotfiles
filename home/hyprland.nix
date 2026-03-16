@@ -4,7 +4,6 @@
     kitty
     waybar
     rofi
-    swaylock
     hyprlock
     xfce.thunar
     discord
@@ -49,7 +48,7 @@
         # Hyprlock
         "$mainMod, L, exec, hyprlock"
         #Screenshot
-        "$mainMod, G, exec, hyprshot -m region --clipboard-only"
+        "$mainMod, G, exec, hyprshot -m region --clipboard-only --silent"
         "$mainMod, H, exec, hyprshot -m region      		 "
         "$mainMod, SUPER_L, exec, $menu"
         "$mainMod, Return, exec, $terminal"

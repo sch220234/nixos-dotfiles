@@ -12,6 +12,7 @@ in
 {
   home.username = "max";
   home.homeDirectory = "/home/max";
+  home.stateVersion = "25.11";
 
   imports = [
     ./hyprland.nix
@@ -27,8 +28,6 @@ in
     ./tmux.nix
     ./java.nix
   ];
-
-  home.stateVersion = "25.05";
 
   programs.home-manager.enable = true;
 }

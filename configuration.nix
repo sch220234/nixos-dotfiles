@@ -33,8 +33,18 @@
       };
     };
   };
+  ###LOCK
+  services.logind.settings.Login = {
+    HandleLidSwitchDocked = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitch = "ignore";
+  };
   ###TEMP
   networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [
+    8443
+    4200
+  ];
 
   time.timeZone = "Europe/Vienna";
 
@@ -175,8 +185,7 @@
     })
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
-    steam
-    steam-run
+    # steam-run
     alsa-utils
     zed
     vscodium
@@ -325,8 +334,6 @@
     socat
     bun
     waybar
-    swaylock
-    hyprlock
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
     wireplumber
@@ -338,6 +345,9 @@
     neofetch
     mapscii
     vagrant
+    woeusb
+    woeusb-ng
+    ansible_2_18
   ];
   hardware.graphics = {
     enable = true;
@@ -361,8 +371,6 @@
     enable = true;
     xwayland.enable = true;
   };
-
-  programs.hyprlock.enable = true;
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";

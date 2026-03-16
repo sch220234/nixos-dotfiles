@@ -8,4 +8,8 @@
     maven
     gradle
   ];
+
+  programs.helix.extraPackages = [
+    pkgs.jdt-language-server
+  ];
 }
