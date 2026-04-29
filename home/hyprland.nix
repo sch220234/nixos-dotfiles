@@ -49,7 +49,7 @@
         "$mainMod, L, exec, hyprlock"
         #Screenshot
         "$mainMod, G, exec, hyprshot -m region --clipboard-only --silent"
-        "$mainMod, H, exec, hyprshot -m region      		 "
+        "$mainMod, H, exec, hyprshot -m region --silent"
         "$mainMod, SUPER_L, exec, $menu"
         "$mainMod, Return, exec, $terminal"
         "$mainMod, Q, killactive,"

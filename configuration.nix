@@ -16,6 +16,10 @@
   ];
   system.stateVersion = "25.11";
 
+  environment.variables = {
+    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+  };
+
   programs.command-not-found.enable = true;
 
   boot.loader.systemd-boot.enable = true;
@@ -40,11 +44,17 @@
     HandleLidSwitch = "ignore";
   };
   ###TEMP
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
   networking.firewall.allowedTCPPorts = [
     8443
     4200
+    6443
   ];
+  networking.firewall.trustedInterfaces = [
+    "virbr0"
+    "virbr1"
+  ];
+  networking.firewall.checkReversePath = false;
 
   time.timeZone = "Europe/Vienna";
 
@@ -85,8 +95,7 @@
     xkb.layout = "us,de";
     xkb.variant = "";
     videoDrivers = [
-      "vmware"
-      "nvidia"
+      "modesetting"
     ];
   };
 
@@ -232,7 +241,6 @@
     docker
     fishPlugins.foreign-env
     jetbrains.datagrip
-    jetbrains.pycharm
     xfce.thunar
     tree
     traceroute
@@ -348,11 +356,23 @@
     woeusb
     woeusb-ng
     ansible_2_18
+    dnsmasq
+    kubernetes
+    code-cursor
+    claude-code
+    codex
+    vercel-pkg
+    android-tools
+    mesa-demos
+    oracle-instantclient
+    k3s
+    kubectl
+    kubernetes-helm
   ];
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
-  hardware.nvidia.open = true;
 
   hardware.bluetooth = {
     enable = true;
@@ -381,4 +401,13 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # services.openssh.enable = true;
+  services.k3s = {
+    enable = true;
+    role = "server";
+    extraFlags = toString [
+      "--write-kubeconfig-mode=644"
+      # "--debug"
+    ];
+  };
+
 }

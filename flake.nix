@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     systems.url = "github:nix-systems/x86_64-linux";
 
     home-manager = {
@@ -25,6 +26,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       firefox-extensions,
       claude-desktop,
@@ -39,6 +41,7 @@
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
+            "electron-37.10.3"
             "dotnet-sdk-6.0.428"
             "dotnet-runtime-6.0.36"
             "ciscoPacketTracer8-8.2.2"
@@ -46,7 +49,7 @@
         };
       };
 
-      unstablePkgs = import inputs.nixpkgs {
+      unstablePkgs = import inputs.nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
@@ -70,6 +73,7 @@
           ./modules/packettracer.nix
           home-manager.nixosModules.home-manager
           {
+            environment.systemPackages = [ unstablePkgs.code-cursor ];
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
